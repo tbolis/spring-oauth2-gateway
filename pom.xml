@@ -1,0 +1,88 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <modules>
+        <module>common-lib</module>
+        <module>domain-model</module>
+        <module>oauth2-resources</module>
+        <module>oauth2-authorization</module>
+    </modules>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.3.2.RELEASE</version>
+        <relativePath/>
+    </parent>
+    <groupId>io.spring.oauth2</groupId>
+    <artifactId>oauth2-gateway</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>[OAuth2] API Gateway</name>
+    <inceptionYear>2015</inceptionYear>
+    <url>https://github.com/tbolis</url>
+    <properties>
+        <!-- Libraries -->
+        <lombok.version>1.16.6</lombok.version>
+        <jackson.version>2.6.1</jackson.version>
+        <hikaricp.version>2.4.1</hikaricp.version>
+        <commons-io.version>2.4</commons-io.version>
+        <javax.inject.version>1</javax.inject.version>
+        <commons-lang.version>2.6</commons-lang.version>
+        <google.guava.version>19.0</google.guava.version>
+        <assertj-core.version>3.1.0</assertj-core.version>
+        <hibernate.version>4.3.11.Final</hibernate.version>
+        <postgresql.version>9.4-1203-jdbc42</postgresql.version>
+        <dropwizard-metrics.version>3.1.2</dropwizard-metrics.version>
+        <spring-security.version>4.0.2.RELEASE</spring-security.version>
+        <spring-security-oauth2.version>2.0.8.RELEASE</spring-security-oauth2.version>
+        <!-- Plugins -->
+        <asciidoctor.version>1.5.2.1</asciidoctor.version>
+        <!-- Configuration -->
+        <java.version>1.8</java.version>
+        <logback.loglevel>INFO</logback.loglevel>
+        <main.basedir>${basedir}/../..</main.basedir>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+    </properties>
+    <prerequisites>
+        <maven>3.0.0</maven>
+    </prerequisites>
+    <dependencies>
+        <!--
+            Spice up your java: Automatic Resource Management, automatic generation of getters, setters, equals,
+            hashCode and toString, and more!
+        -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+        <!--
+            Guava is a suite of core and expanded libraries that include utility classes, google's collections,
+            io classes, and much much more. Guava has only one code dependency - javax.annotation,
+            per the JSR-305 spec.
+        -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${google.guava.version}</version>
+        </dependency>
+    </dependencies>
+    <!--
+        Manage Maven Profiles
+    -->
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <!-- log configuration -->
+                <logback.loglevel>INFO</logback.loglevel>
+            </properties>
+        </profile>
+    </profiles>
+</project>

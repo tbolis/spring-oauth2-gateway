@@ -1,0 +1,61 @@
+
+# Jetty HTTP Web container configuration
+# ======================================
+server:
+  port: 8201
+  contextPath: /res
+  compression:
+    enabled: true
+    min-response-size: 1
+    mime-types: text/html,text/xml,text/plain,text/css, application/javascript, application/json
+
+
+# Spring configuration
+# ====================
+spring:
+  datasource:
+        driver-class-name: org.postgresql.ds.PGSimpleDataSource
+        url: jdbc:postgresql://localhost:5432/postgres
+        name: postgres
+        username: postgres
+        password: postgres
+  jpa:
+    database-platform: FixedPostgreSQL82Dialect
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+      naming-strategy: org.springframework.boot.orm.jpa.hibernate.SpringNamingStrategy
+  mail:
+    host: smtp.gmail.com
+    port: 25
+    username: test
+    password: test
+  thymeleaf:
+    cache: false
+
+
+# Flyway db migration configuration
+# =================================
+flyway:
+  enabled: true
+  baselineOnMigrate: true
+
+
+# Application Configuration
+# =========================
+config:
+  tokenService:
+    client-id: backend
+    client-secret: x5UR7ZvHyydEZLhB
+    check-token-url: http://localhost:8200/auth/oauth/check_token
+  mail:
+    from: thomas.bolis@gmail.com
+#    rememberMe:
+#      # security key (this key should be unique for your application, and kept secret)
+#      key: 20f7735c39d10ba97fadd184e998682cf7e0c21c
+
+
+logging:
+  level:
+    org.springframework.security: DEBUG
